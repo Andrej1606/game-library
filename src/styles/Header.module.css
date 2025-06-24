@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   color: white;
 }
 
 header {
@@ -10,20 +11,22 @@ header {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 15px 25px;
+   padding: 20px 25px;
+   color: white;
 }
 
 a {
    text-decoration: none;
+   color: white;
 }
 
 .logo {
    background: linear-gradient(0deg, #a100f2, #ffd700);
    background-clip: text;
    color: transparent;
-   font-size: 32px;
+   font-family: "Press Start 2P", system-ui;
+   font-size: 28px;
    font-weight: bold;
-   font-family: "Orbitron", sans-serif;
 }
 
 nav {

@@ -6,6 +6,7 @@ import GamePage from './pages/GamePage';
 import EditPage from './pages/EditPage';
 import AddPage from './pages/AddPage';
 
+import classes from './styles/App.module.css'
 
 function App() {
   return (

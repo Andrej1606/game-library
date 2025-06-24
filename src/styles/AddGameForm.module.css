@@ -1,0 +1,49 @@
+.addGameForm {
+   width: 800px;
+   margin: 0 auto;
+   padding: 0 20px 20px 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   align-items: center;
+}
+
+.inputHolder {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   padding: 15px;
+}
+
+.inputHolder label {
+   font-size: 38px;
+   color: rgb(60, 10, 94);
+}
+
+.inputHolder input {
+   all: unset;
+   width: 300px;
+   border-bottom: 1px solid;
+   padding: 5px;
+}
+
+.inputHolder input[type="file"] {
+   margin: 0 auto;
+   text-align: center;
+}
+
+.addGameForm button {
+   all: unset;
+   margin-top: 15px;
+   font-size: 25px;
+   background-color: #5a1172;
+   color: white;
+   padding: 8px 25px;
+   border-radius: 12px;
+   box-shadow: 0 4px #2c063a;
+}
+
+.addGameForm button:active {
+   box-shadow: 0 2px #2c063a;
+   transform: translateY(2px);
+}
