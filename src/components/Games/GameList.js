@@ -19,10 +19,12 @@ const GameList = () => {
             <div className={classes.gameList}>
                 {games.map(game => (
                     <GameItem
+                        key={game.id}
                         id={game.id}
                         src={game.images[0]}
                         title={game.title}
                         price={game.price}
+                        description={game.description}
                     />
                 ))}
             </div>

@@ -6,7 +6,7 @@ import AddEditGameForm from "../components/UI/AddEditGameForm";
 const AddPage = () => {
     return (
         <Fragment>
-            <Header route='/' title='Home' />
+            <Header route='/' title='Back' />
             <AddEditGameForm pageHeader='Add Game' />
         </Fragment>
     )

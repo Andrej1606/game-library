@@ -1,0 +1,31 @@
+.gamePageInfo {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 35px;
+   width: 80%;
+   margin: 40px auto;
+   color: rgb(60, 10, 94);
+}
+
+.game-title {
+   text-align: center;
+   font-size: 48px;
+   font-style: italic;
+}
+
+.game-image {
+   height: 400px;
+}
+
+.game-price {
+   font-size: 32px;
+   font-weight: bold;
+   font-style: italic;
+}
+
+.game-description {
+   text-align: center;
+   font-size: 24px;
+}
