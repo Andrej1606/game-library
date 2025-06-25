@@ -1,10 +1,17 @@
+h2 {
+   text-align: center;
+   padding: 2rem;
+   font-size: 68px;
+   font-style: italic;
+   color: rgb(60, 10, 94);
+}
+
 .addGameForm {
    width: 800px;
    margin: 0 auto;
    padding: 0 20px 20px 20px;
    display: flex;
    flex-direction: column;
-   justify-content: start;
    align-items: center;
 }
 
@@ -22,14 +29,10 @@
 
 .inputHolder input {
    all: unset;
+   margin: 0 auto;
    width: 300px;
    border-bottom: 1px solid;
    padding: 5px;
-}
-
-.inputHolder input[type="file"] {
-   margin: 0 auto;
-   text-align: center;
 }
 
 .addGameForm button {
@@ -40,10 +43,11 @@
    color: white;
    padding: 8px 25px;
    border-radius: 12px;
-   box-shadow: 0 4px #2c063a;
+   box-shadow: 0 8px #2c063a;
+   cursor: pointer;
 }
 
 .addGameForm button:active {
-   box-shadow: 0 2px #2c063a;
-   transform: translateY(2px);
+   box-shadow: 0 3px #2c063a;
+   transform: translateY(5px);
 }

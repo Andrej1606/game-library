@@ -1,0 +1,76 @@
+.game {
+   width: 19%;
+   background-color: #490f5c;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   margin: 10px 0;
+   color: white;
+   border-radius: 8px;
+   padding: 50px 25px 0 25px;
+   transition: all 0.3s;
+}
+
+.game:hover {
+   transform: translateY(-5px);
+   background-color: #3c0c4c;
+}
+
+.game img {
+   width: 100%;
+}
+
+.game p {
+   font-style: italic;
+   font-size: 20px;
+}
+
+.game h3 {
+   height: 20%;
+   font-size: 20px;
+}
+
+.buttonHolder {
+   display: flex;
+   opacity: 0;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   transition: all 0.5s;
+}
+
+.game:hover .buttonHolder {
+   height: auto;
+   opacity: 1;
+}
+
+.buttonHolder button {
+   border: none;
+   font-weight: bold;
+   border-radius: 8px;
+   padding: 5px 20px;
+   margin: 10px;
+   cursor: pointer;
+}
+
+.viewEdit {
+   background-color: rgb(222, 217, 217);
+   color: #3c0c4c;
+   box-shadow: 0 4px rgb(189, 186, 186);
+}
+
+.viewEdit:active {
+   box-shadow: 0 2px rgb(189, 186, 186);
+   transform: translateY(2px);
+}
+
+.delete {
+   color: white;
+   background-color: #d32f2f;
+   box-shadow: 0 4px #b71c1c;
+}
+
+.delete:active {
+   box-shadow: 0 2px #b71c1c;
+   transform: translateY(2px);
+}
