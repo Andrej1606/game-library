@@ -4,12 +4,14 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
+   position: relative;
    text-align: center;
    margin: 10px 0;
    color: white;
    border-radius: 8px;
-   padding: 50px 25px 0 25px;
+   padding: 70px 25px 0 25px;
    transition: all 0.3s;
+   overflow: hidden;
 }
 
 .game:hover {
@@ -17,18 +19,42 @@
    background-color: #3c0c4c;
 }
 
-.game img {
-   width: 100%;
-}
-
 .game p {
    font-style: italic;
    font-size: 20px;
 }
 
+p.stock {
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 5px;
+   font-size: 12px;
+   border-bottom-left-radius: 8px;
+   font-style: normal;
+   font-weight: bold;
+}
+
+p.hot {
+   background-color: #d32f2f;
+}
+
+p.available {
+   background-color: #4caf50;
+}
+
+p.sold {
+   background-color: rgb(222, 217, 217);
+   color: #3c0c4c;
+}
+
 .game h3 {
    height: 20%;
    font-size: 20px;
+}
+
+.game img {
+   width: 100%;
 }
 
 .buttonHolder {
@@ -73,4 +99,55 @@
 .delete:active {
    box-shadow: 0 2px #b71c1c;
    transform: translateY(2px);
+}
+
+@media (max-width: 1300px) {
+   .game {
+      width: 24%;
+   }
+
+   .buttonHolder button {
+      padding: 5px 12px;
+   }
+}
+
+@media (max-width: 1007px) {
+   .game {
+      width: 32%;
+   }
+
+   .buttonHolder button {
+      padding: 5px 12px;
+   }
+}
+
+@media (max-width: 760px) {
+   .game {
+      width: 48%;
+   }
+
+   .buttonHolder button {
+      padding: 5px 12px;
+   }
+}
+
+@media (max-width: 505px) {
+   .game {
+      width: 80%;
+      padding: 40px 20px 0 20px;
+   }
+
+   .buttonHolder {
+      padding: 10px;
+   }
+
+   .buttonHolder button {
+      padding: 5px 20px;
+   }
+}
+
+@media (max-width: 368px) {
+   .buttonHolder button {
+      padding: 5px 15px;
+   }
 }

@@ -3,7 +3,6 @@
    background-color: #2d033b;
    color: white;
    font-size: 14px;
-   font-weight: bold;
 }
 
 .miniContainer {
@@ -35,4 +34,23 @@
    justify-content: center;
    text-align: start;
    gap: 15px;
+}
+
+@media (max-width: 760px) {
+   .container {
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   p {
+      font-size: 10px;
+   }
+}
+
+@media (max-width: 380px) {
+   p {
+      font-size: 8px;
+   }
 }

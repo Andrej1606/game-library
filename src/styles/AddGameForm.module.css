@@ -19,20 +19,33 @@ h2 {
    display: flex;
    flex-direction: column;
    text-align: center;
+   justify-content: center;
    padding: 15px;
 }
 
 .inputHolder label {
    font-size: 38px;
+   padding: 5px;
    color: rgb(60, 10, 94);
 }
 
 .inputHolder input {
    all: unset;
    margin: 0 auto;
-   width: 300px;
+   width: 400px;
    border-bottom: 1px solid;
    padding: 5px;
+}
+
+.inputHolder textarea {
+   all: unset;
+   resize: none;
+   width: 400px;
+   padding: 10px;
+   border: 1px solid black;
+   border-radius: 6px;
+   white-space: pre-wrap;
+   word-wrap: break-word;
 }
 
 .addGameForm button {
@@ -50,4 +63,44 @@ h2 {
 .addGameForm button:active {
    box-shadow: 0 3px #2c063a;
    transform: translateY(5px);
+}
+
+@media (max-width: 800px) {
+   h2 {
+      font-size: 32px;
+      padding: 15px;
+   }
+
+   .addGameForm {
+      width: 100%;
+      margin: 0;
+   }
+
+   .inputHolder {
+      width: 80%;
+      padding: 5px;
+   }
+
+   .inputHolder label {
+      font-size: 28px;
+   }
+
+   .inputHolder input {
+      width: 100%;
+      border: none;
+   }
+
+   .inputHolder input[type="file"] {
+      width: 250px;
+   }
+
+   .inputHolder textarea {
+      width: 90%;
+      margin: 0 auto;
+      font-size: 14px;
+   }
+
+   .addGameForm button {
+      font-size: 18px;
+   }
 }

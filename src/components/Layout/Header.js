@@ -11,7 +11,6 @@ const Header = (props) => {
         <header>
             <Link to='/' className={classes.logo}>Game Library</Link>
             <nav>
-                <Link to={props.route}>{props.title}</Link>
                 {props.title === 'Add Games' && <div className={classes.searchBox}>
                     <label htmlFor="search">
                         <svg dataslot="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -20,6 +19,7 @@ const Header = (props) => {
                     </label>
                     <input type="search" placeholder="Search" id="search" />
                 </div>}
+                <Link to={props.route}>{props.title}</Link>
             </nav>
         </header>
     )

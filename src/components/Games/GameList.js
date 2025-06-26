@@ -25,6 +25,7 @@ const GameList = () => {
                         title={game.title}
                         price={game.price}
                         description={game.description}
+                        stock={game.stock}
                     />
                 ))}
             </div>
