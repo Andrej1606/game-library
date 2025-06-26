@@ -1,41 +1,67 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGameContext } from '../../context/GameContext';
 
-import classes from '../../styles/AddGameForm.module.css'
+import classes from '../../styles/AddGameForm.module.css';
 
 const AddEditGameForm = (props) => {
+    const navigate = useNavigate();
+    const { addGame, updateGame } = useGameContext();
+
     const [formValues, setFormValues] = useState({
+        image: props.imageValue || '',
         name: props.nameValue || '',
         price: props.priceValue || '',
         description: props.descriptionValue || '',
         stock: props.stockValue || ''
     });
 
-    const nameHandler = (e) => {
-        setFormValues((prev) => ({ ...prev, name: e.target.value }))
-    }
+    const fileHandler = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const tempUrl = URL.createObjectURL(file);
+            setFormValues((prev) => ({ ...prev, image: tempUrl }));
+        }
+    };
 
-    const priceHandler = (e) => {
-        setFormValues((prev) => ({ ...prev, price: e.target.value }))
-    }
+    const changeHandler = (key) => (e) => {
+        setFormValues((prev) => ({ ...prev, [key]: e.target.value }));
+    };
 
-    const descriptionHandler = (e) => {
-        setFormValues((prev) => ({ ...prev, description: e.target.value }))
-    }
+    const submitHandler = (e) => {
+        e.preventDefault();
 
-    const stockHandler = (e) => {
-        setFormValues((prev) => ({ ...prev, stock: e.target.value }))
-    }
+        const gameData = {
+            title: formValues.name,
+            price: parseFloat(formValues.price),
+            description: formValues.description,
+            stock: parseInt(formValues.stock),
+            images: [formValues.image || 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2Fdesign-bootcamp%2Funderstanding-error-codes-in-software-development-fbdf62fc585&psig=AOvVaw0F4tZBnlufGR_yw_AwWf-x&ust=1751047266685000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCDwMTVj44DFQAAAAAdAAAAABAE']
+        };
+
+        if (props.pageHeader === 'Add Game') {
+            addGame(gameData);
+        }
+
+        if (props.pageHeader === 'Edit Game') {
+            updateGame(props.id, gameData);
+        }
+
+        navigate('/');
+    };
 
     return (
         <>
             <h2>{props.pageHeader}</h2>
-            <form className={classes.addGameForm}>
+            <form className={classes.addGameForm} onSubmit={submitHandler}>
                 <div className={classes.inputHolder}>
                     <label htmlFor='picture'>Picture of the Game:</label>
                     <input
                         id='picture'
                         type='file'
+                        accept='image/*'
                         title='Choose picture of the game.'
+                        onChange={fileHandler}
                     />
                 </div>
                 <div className={classes.inputHolder}>
@@ -44,9 +70,9 @@ const AddEditGameForm = (props) => {
                         id='name'
                         type='text'
                         placeholder='Game Name'
-                        title="Type the name of the game."
                         value={formValues.name}
-                        onChange={nameHandler} />
+                        onChange={changeHandler('name')}
+                    />
                 </div>
                 <div className={classes.inputHolder}>
                     <label htmlFor='price'>Game Price:</label>
@@ -54,42 +80,38 @@ const AddEditGameForm = (props) => {
                         id='price'
                         type='number'
                         min='0'
-                        step={0.01}
+                        step='0.01'
                         placeholder='Game Price'
-                        title="Type the price of the game."
                         value={formValues.price}
-                        onChange={priceHandler}
+                        onChange={changeHandler('price')}
                     />
                 </div>
                 <div className={classes.inputHolder}>
                     <label htmlFor='description'>Game Description:</label>
                     <textarea
                         id='description'
-                        placeholder='Game Description'
                         rows={5}
-                        title='Type description for the game.'
+                        placeholder='Game Description'
                         value={formValues.description}
-                        onChange={descriptionHandler}
+                        onChange={changeHandler('description')}
                     />
                 </div>
                 <div className={classes.inputHolder}>
                     <label htmlFor='stock'>Game Stock:</label>
                     <input
-                        type='number'
                         id='stock'
-                        min={0}
-                        step={1}
+                        type='number'
+                        min='0'
+                        step='1'
                         placeholder='Game Stock'
-                        title='Input amount of available games'
                         value={formValues.stock}
-                        onChange={stockHandler}
+                        onChange={changeHandler('stock')}
                     />
                 </div>
-
-                <button>{props.pageHeader}</button>
+                <button type='submit'>{props.pageHeader}</button>
             </form>
         </>
-    )
-}
+    );
+};
 
 export default AddEditGameForm;

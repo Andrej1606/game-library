@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-import classes from '../../styles/GameItem.module.css'
+import classes from '../../styles/GameItem.module.css';
 
 const GameItem = (props) => {
-    const navigate = useNavigate()
-    const [stockText, setStockText] = useState('')
-    const [stockClasses, setStockClasses] = useState('')
+    const navigate = useNavigate();
+    const [stockText, setStockText] = useState('');
+    const [stockClasses, setStockClasses] = useState('');
 
-    const alertHandler = (e) => {
+    const alertHandler = () => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -26,32 +26,33 @@ const GameItem = (props) => {
                     icon: "success",
                     confirmButtonColor: '#490f5c'
                 });
+                props.onDelete(props.id);
             }
         });
-    }
+    };
 
     useEffect(() => {
         if (props.stock > 100) {
-            setStockText('Hot')
-            setStockClasses(`${classes.stock} ${classes.hot}`)
+            setStockText('Hot');
+            setStockClasses(`${classes.stock} ${classes.hot}`);
         } else if (props.stock > 0 && props.stock <= 100) {
-            setStockText('Available')
-            setStockClasses(`${classes.stock} ${classes.available}`)
+            setStockText('Available');
+            setStockClasses(`${classes.stock} ${classes.available}`);
         } else {
-            setStockText('Sold out')
-            setStockClasses(`${classes.stock} ${classes.sold}`)
+            setStockText('Sold out');
+            setStockClasses(`${classes.stock} ${classes.sold}`);
         }
-    }, [props.stock])
+    }, [props.stock]);
 
     return (
-        <div key={props.id} className={classes.game}>
+        <div className={classes.game}>
             <p className={stockClasses}>{stockText}</p>
             <h3>{props.title}</h3>
-            <img src={props.src} />
+            <img src={props.src} alt={props.title} />
             <p>Price: ${props.price}</p>
             <div className={classes.buttonHolder}>
-                <button onClick={() =>
-                    navigate(`/game/${props.id}`, {
+                <button
+                    onClick={() => navigate(`/game/${props.id}`, {
                         state: {
                             title: props.title,
                             image: props.src,
@@ -59,25 +60,35 @@ const GameItem = (props) => {
                             description: props.description,
                         }
                     })}
-                    type='button' className={classes.viewEdit}>View</button>
-                <button onClick={() => navigate(`/game/edit/${props.id}`, {
-                    state: {
-                        title: props.title,
-                        price: props.price,
-                        description: props.description,
-                        stock: props.stock
-                    }
-                })}
-                    type='button' className={classes.viewEdit}>Edit</button>
+                    type='button'
+                    className={classes.viewEdit}
+                >
+                    View
+                </button>
+                <button
+                    onClick={() => navigate(`/game/edit/${props.id}`, {
+                        state: {
+                            title: props.title,
+                            price: props.price,
+                            description: props.description,
+                            stock: props.stock
+                        }
+                    })}
+                    type='button'
+                    className={classes.viewEdit}
+                >
+                    Edit
+                </button>
                 <button
                     type='button'
                     className={classes.delete}
                     onClick={alertHandler}
-                >Delete</button>
+                >
+                    Delete
+                </button>
             </div>
-        </div >
+        </div>
+    );
+};
 
-    )
-}
-
-export default GameItem
+export default GameItem;

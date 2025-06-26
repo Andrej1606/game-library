@@ -3,10 +3,12 @@
    background-color: #2d033b;
    color: white;
    font-size: 14px;
+   position: fixed;
+   top: 88%;
 }
 
 .miniContainer {
-   height: 100px;
+   height: 10%;
    width: 80%;
    margin: 10px auto 0 auto;
    display: flex;
@@ -38,19 +40,20 @@
 
 @media (max-width: 760px) {
    .container {
-      height: 120px;
+      height: 12%;
       display: flex;
       justify-content: center;
       align-items: center;
+      top: 88%;
    }
 
    p {
-      font-size: 10px;
+      font-size: 8px;
    }
 }
 
 @media (max-width: 380px) {
    p {
-      font-size: 8px;
+      font-size: 6px;
    }
 }

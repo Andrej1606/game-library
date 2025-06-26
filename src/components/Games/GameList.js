@@ -1,37 +1,34 @@
-import { Fragment, useState, useEffect } from "react";
-
-import GameItem from "./GameItem";
-import classes from '../../styles/GameList.module.css'
+import { useGameContext } from '../../context/GameContext';
+import GameItem from './GameItem';
+import classes from '../../styles/GameList.module.css';
 
 const GameList = () => {
-    const [games, setGames] = useState([]);
+    const { games, deleteGame, search } = useGameContext();
 
-    useEffect(() => {
-        fetch('https://dummyjson.com/product')
-            .then(results => results.json())
-            .then(data => setGames(data.products))
-            .catch(err => console.error(err)
-            );
-    }, [])
+    const searchSafe = search || '';
+
+    const filteredGames = games.filter(game =>
+        game.title?.toLowerCase().includes(searchSafe.toLowerCase())
+    );
+
 
     return (
-        <Fragment >
-            <div className={classes.gameList}>
-                {games.map(game => (
-                    <GameItem
-                        key={game.id}
-                        id={game.id}
-                        src={game.images[0]}
-                        title={game.title}
-                        price={game.price}
-                        description={game.description}
-                        stock={game.stock}
-                    />
-                ))}
-            </div>
-        </Fragment>
-    )
-}
+        <div className={classes.gameList}>
+            {filteredGames.length === 0 && <p className={classes.alert}>No Games Found...</p>}
+            {filteredGames.map((game) => (
+                <GameItem
+                    key={game.id}
+                    id={game.id}
+                    src={game.images?.[0]} s
+                    title={game.title}
+                    price={game.price}
+                    description={game.description}
+                    stock={game.stock}
+                    onDelete={deleteGame}
+                />
+            ))}
+        </div>
+    );
+};
 
 export default GameList;
-

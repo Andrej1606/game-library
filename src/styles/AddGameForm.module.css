@@ -4,11 +4,12 @@ h2 {
    font-size: 68px;
    font-style: italic;
    color: rgb(60, 10, 94);
+   margin-top: 70px;
 }
 
 .addGameForm {
    width: 800px;
-   margin: 0 auto;
+   margin: 0 auto 135px auto;
    padding: 0 20px 20px 20px;
    display: flex;
    flex-direction: column;

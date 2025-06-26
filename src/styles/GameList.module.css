@@ -3,5 +3,19 @@
    justify-content: space-evenly;
    flex-wrap: wrap;
    width: 80%;
-   margin: 15px auto;
+   margin: 80px auto 100px auto;
+}
+
+.alert {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-size: 24px;
+}
+
+@media (max-width: 425px) {
+   .alert {
+      font-size: 16px;
+   }
 }

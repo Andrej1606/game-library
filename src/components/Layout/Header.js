@@ -1,28 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useGameContext } from '../../context/GameContext';
+import { Link } from 'react-router-dom';
 
-import classes from '../../styles/Header.module.css'
+import classes from '../../styles/Header.module.css';
 
-const Header = (props) => {
+const Header = ({ route, title }) => {
+    const { setSearch } = useGameContext();
 
-
+    const searchHandler = (e) => {
+        setSearch(e.target.value)
+    }
 
     return (
         <header>
             <Link to='/' className={classes.logo}>Game Library</Link>
             <nav>
-                {props.title === 'Add Games' && <div className={classes.searchBox}>
-                    <label htmlFor="search">
-                        <svg dataslot="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path clipRule="evenodd" fillRule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" />
-                        </svg>
-                    </label>
-                    <input type="search" placeholder="Search" id="search" />
-                </div>}
-                <Link to={props.route}>{props.title}</Link>
+                {title === 'Add Games' && (
+                    <div className={classes.searchBox}>
+                        <label htmlFor='search'><svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+                        </svg></label>
+                        <input
+                            type='search'
+                            placeholder='Search'
+                            id='search'
+                            onChange={searchHandler}
+                        />
+                    </div>
+                )}
+                <Link to={route}>{title}</Link>
             </nav>
         </header>
-    )
-}
+    );
+};
 
 export default Header;
+
